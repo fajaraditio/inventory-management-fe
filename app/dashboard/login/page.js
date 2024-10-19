@@ -1,8 +1,14 @@
-import Button from "@/app/components/atoms/Button";
-import Input from "@/app/components/atoms/Input";
+"use client";
+
+import { Button, Card, CardBody, CardFooter, CardHeader, Divider, Input } from "@nextui-org/react";
 import Image from "next/image";
+import React from "react";
 
 export default function LoginPage() {
+    const [isVisible, setIsVisible] = React.useState(false);
+
+    const toggleVisibility = () => setIsVisible(!isVisible);
+
     return (
         <div className="flex flex-col items-center justify-center min-h-screen">
 
@@ -10,21 +16,31 @@ export default function LoginPage() {
 
             <h1 className="text-center font-semibold text-2xl mb-6">Login Dashboard</h1>
 
-            <div className="shadow rounded bg-white p-12 max-w-md w-full">
-                <p className="text mb-6">Please login to your account before entering dashboard</p>
-
-                <div className="mb-6">
-                    <label htmlFor="email" className="text-sm">Email</label>
-                    <Input type="text" name="email" id="email" placeholder="john.doe@gmail.com" className="w-full"></Input>
-                </div>
-                <div className="mb-6">
-                    <label htmlFor="email" className="text-sm">Password</label>
-                    <Input type="password" name="password" placeholder="* * * * * *" className="w-full"></Input>
-                </div>
-                <div className="mb-6">
-                    <Button type="primary">Login Sekarang</Button>
-                </div>
-            </div>
+            <Card radius="sm" className="p-3">
+                <CardHeader className="p-6">
+                    <p className="text">Please login to your account before entering dashboard</p>
+                </CardHeader>
+                <Divider className="bg-gray-100"></Divider>
+                <CardBody className="p-6">
+                    <div className="mb-6">
+                        <Input type="email" name="email" label="Email" autoComplete="off" placeholder="john.doe@example.com" size="md" radius="sm" variant="bordered" labelPlacement="outside" classNames={{
+                            inputWrapper: [
+                                "border-1",
+                            ]
+                        }} />
+                    </div>
+                    <div className="mb-6">
+                        <Input type="password" name="password" label="Password" autoComplete="off"  placeholder="* * * * * *" size="md" radius="sm" variant="bordered" labelPlacement="outside" classNames={{
+                            inputWrapper: [
+                                "border-1",
+                            ]
+                        }} />
+                    </div>
+                    <div className="mb-6">
+                        <Button radius="sm" className="bg-blue-800 text-white">Login Sekarang</Button>
+                    </div>
+                </CardBody>
+            </Card>
         </div>
     )
 }

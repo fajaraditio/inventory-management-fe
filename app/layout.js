@@ -1,4 +1,5 @@
 import "./globals.css";
+import { NextUIProvider } from "@nextui-org/react";
 
 export default function RootLayout({ children }) {
   return (
@@ -6,7 +7,9 @@ export default function RootLayout({ children }) {
       <body
         className={`antialiased bg-gray-50`}
       >
-        {children}
+        <NextUIProvider>
+          {children}
+        </NextUIProvider>
       </body>
     </html>
   );
