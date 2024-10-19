@@ -1,5 +1,6 @@
 "use client";
 
+import handleLogin from "@/app/lib/auth";
 import { Button, Card, CardBody, CardFooter, CardHeader, Divider, Input } from "@nextui-org/react";
 import { Eye } from "@phosphor-icons/react";
 import { EyeSlash } from "@phosphor-icons/react/dist/ssr";
@@ -7,7 +8,7 @@ import Image from "next/image";
 import React from "react";
 
 export default function LoginPage() {
-    const [errors, setErrors] = React.useState({})
+    const [errors, setErrors] = React.useState([])
     const [isVisible, setIsVisible] = React.useState(false);
     const toggleVisibility = () => setIsVisible(!isVisible);
 
@@ -28,6 +29,7 @@ export default function LoginPage() {
 
             if (!response.ok) setErrors(data.errors);
 
+            handleLogin(data.data.token)
         } catch (error) {
             console.error(error);
         }
@@ -52,7 +54,7 @@ export default function LoginPage() {
                                 inputWrapper: [
                                     "border-1",
                                 ]
-                            }} isInvalid={errors && errors.email && errors.email.length > 0} errorMessage={errors && errors.email && errors.email[0]} />
+                            }} onFocus={() => setErrors({})} isInvalid={errors && errors.email && errors.email.length > 0} errorMessage={errors && errors.email && errors.email[0]} />
                         </div>
                         <div className="mb-6">
                             <Input type={isVisible ? 'text' : 'password'} name="password" label="Password" autoComplete="off" placeholder="* * * * * *" size="md" radius="sm" variant="bordered" labelPlacement="outside" classNames={{
@@ -63,7 +65,7 @@ export default function LoginPage() {
                                 <button className="focus:outline-none" type="button" onClick={toggleVisibility} aria-label="toggle password visibility">
                                     {isVisible ? <Eye></Eye> : <EyeSlash></EyeSlash>}
                                 </button>
-                            } isInvalid={errors && errors.password && errors.password.length > 0} errorMessage={errors && errors.password && errors.password[0]} />
+                            } onFocus={() => setErrors({})} isInvalid={errors && errors.password && errors.password.length > 0} errorMessage={errors && errors.password && errors.password[0]} />
                         </div>
                         <div className="mb-6">
                             <Button type="submit" radius="sm" className="bg-blue-800 text-white">Login Sekarang</Button>
