@@ -11,6 +11,7 @@
   "dependencies": {
     "@nextui-org/react": "^2.4.8",
     "@phosphor-icons/core": "^2.1.1",
+    "@phosphor-icons/react": "^2.1.7",
     "framer-motion": "^11.11.9",
     "next": "14.2.15",
     "react": "^18",
