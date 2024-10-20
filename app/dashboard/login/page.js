@@ -5,17 +5,20 @@ import { Button, Card, CardBody, CardFooter, CardHeader, Divider, Input } from "
 import { Eye } from "@phosphor-icons/react";
 import { EyeSlash } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
-export default function LoginPage() {
+const LoginPage = () => {
     const [errors, setErrors] = React.useState([])
     const [isVisible, setIsVisible] = React.useState(false);
     const toggleVisibility = () => setIsVisible(!isVisible);
+    const router = useRouter();
 
     async function login(event) {
         event.preventDefault();
 
         const formData = new FormData(event.currentTarget);
+
         try {
             const response = await fetch(`${process.env['NEXT_PUBLIC_API_URL']}/api/auth/login`, {
                 method: 'POST',
@@ -30,6 +33,9 @@ export default function LoginPage() {
             if (!response.ok) setErrors(data.errors);
 
             handleLogin(data.data.token)
+            
+            router.replace('/dashboard');
+
         } catch (error) {
             console.error(error);
         }
@@ -76,3 +82,5 @@ export default function LoginPage() {
         </div>
     )
 }
+
+export default LoginPage;
