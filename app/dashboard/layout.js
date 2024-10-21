@@ -1,12 +1,16 @@
 "use client";
 
+import Cookies from "js-cookie";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import handleLogout from "../lib/logout";
 
-const { Navbar, NavbarBrand, NavbarContent, NavbarItem } = require("@nextui-org/react");
+const { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button } = require("@nextui-org/react");
 const { default: Link } = require("next/link");
 
 const DashboardLayout = ({ children }) => {
+    const router = useRouter();
+
     const navbarItems = [
         {
             name: 'Dashboard',
@@ -21,6 +25,18 @@ const DashboardLayout = ({ children }) => {
             route: '/dashboard/product',
         }
     ];
+
+    const logout = async (event) => {
+        event.preventDefault();
+
+        handleLogout();
+    }
+
+    const excludeLayout = [
+        '/dashboard/login',
+    ];
+
+    if (excludeLayout.includes(usePathname())) return (<div>{children}</div>);
 
     return (
         <div>
@@ -40,7 +56,9 @@ const DashboardLayout = ({ children }) => {
                     }
                 </NavbarContent>
                 <NavbarContent justify="end">
-
+                    <form onSubmit={logout}>
+                        <Button type="submit" radius="sm" className="bg-blue-700 text-white">Logout</Button>
+                    </form>
                 </NavbarContent>
             </Navbar>
 

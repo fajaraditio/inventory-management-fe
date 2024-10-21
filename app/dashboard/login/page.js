@@ -1,7 +1,7 @@
 "use client";
 
-import handleLogin from "@/app/lib/auth";
-import { Button, Card, CardBody, CardFooter, CardHeader, Divider, Input } from "@nextui-org/react";
+import handleLogin from "@/app/lib/login";
+import { Button, Card, CardBody, CardHeader, Divider, Input } from "@nextui-org/react";
 import { Eye } from "@phosphor-icons/react";
 import { EyeSlash } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
@@ -33,8 +33,6 @@ const LoginPage = () => {
             if (!response.ok) setErrors(data.errors);
 
             handleLogin(data.data.token)
-            
-            router.replace('/dashboard');
 
         } catch (error) {
             console.error(error);
