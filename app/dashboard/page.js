@@ -3,9 +3,9 @@ import DashboardLayout from "./layout";
 
 const Dashboard = () => {
     return (
-        <DashboardLayout>
+        <div>
             Authenticated
-        </DashboardLayout>
+        </div>
     )
 }
 
