@@ -72,7 +72,7 @@ const LoginPage = () => {
                             } onFocus={() => setErrors({})} isInvalid={errors && errors.password && errors.password.length > 0} errorMessage={errors && errors.password && errors.password[0]} />
                         </div>
                         <div className="mb-6">
-                            <Button type="submit" radius="sm" className="bg-blue-800 text-white">Login Sekarang</Button>
+                            <Button type="submit" radius="sm" className="bg-blue-800 text-white">Login Dashboard</Button>
                         </div>
                     </CardBody>
                 </form>
