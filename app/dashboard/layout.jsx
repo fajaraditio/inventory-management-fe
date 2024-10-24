@@ -56,12 +56,13 @@ const AppSidebar = () => {
 const DashboardLayout = ({ children }) => {
     return (
         <SidebarProvider>
-            <AppSidebar>
-                <main>
-                    <SidebarTrigger></SidebarTrigger>
+            <AppSidebar />
+            <main className="w-full">
+                <SidebarTrigger></SidebarTrigger>
+                <div className="container p-6">
                     {children}
-                </main>
-            </AppSidebar>
+                </div>
+            </main>
         </SidebarProvider>
     )
 }
