@@ -15,7 +15,7 @@ const LoginPage = () => {
 
     const [errorState, setErrorState] = useState({ ...formState });
 
-    async function login(e) {
+    const login = async (e) => {
         e.preventDefault();
 
         let formData = new FormData(e.currentTarget);

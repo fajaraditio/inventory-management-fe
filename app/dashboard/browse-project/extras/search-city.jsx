@@ -6,6 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { Check, ChevronsUpDown } from "lucide-react"
 import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
+import { Input } from "@/components/ui/input"
 
 const SearchCity = () => {
     const [open, setOpen] = useState(false);
@@ -27,7 +28,7 @@ const SearchCity = () => {
     }
 
     return (
-        <div className="block">
+        <>
             <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild className="w-full">
                     <Button
@@ -71,7 +72,8 @@ const SearchCity = () => {
                     </Command>
                 </PopoverContent>
             </Popover>
-        </div>
+            <Input type="hidden" name="city_name" value={value} />
+        </>
     )
 }
 
