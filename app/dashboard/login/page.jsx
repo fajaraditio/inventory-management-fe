@@ -9,8 +9,11 @@ import { InputPassword } from "@/components/ui/input-password";
 import { Button } from "@/components/ui/button";
 import LoginService from "@/app/lib/services/LoginService";
 import { handleSuccesfullyLogin } from "@/app/lib/actions/auth";
+import { useTranslations } from "next-intl";
 
 const LoginPage = () => {
+    const t = useTranslations('LoginPage');
+
     let formState = { email: "", password: "" };
 
     const [errorState, setErrorState] = useState({ ...formState });
@@ -41,25 +44,25 @@ const LoginPage = () => {
             <Card className="w-full max-w-md p-6">
                 <CardHeader>
                     <Image src="/gree-logo.svg" alt="Gree Logo" width={150} height={150} className="mb-6"></Image>
-                    <CardTitle>Login Dashboard</CardTitle>
+                    <CardTitle>{t('title')}</CardTitle>
                     <CardDescription>Please login to continue to dashboard</CardDescription>
                 </CardHeader>
                 <form onSubmit={login}>
                     <CardContent className="flex flex-col gap-6">
                         <div className="grid w-full max-w-md items-center gap-1.5">
-                            <Label htmlFor="email">Email</Label>
+                            <Label htmlFor="email">{t('email')}</Label>
                             <Input type="email" name="email" id="email" placeholder="Email" autoComplete="off" className={errorState.email ? "ring-red-500 ring-1" : ""} />
                             {errorState.email ? <small className="text-red-500">{errorState.email}</small> : ''}
                         </div>
                         <div className="grid w-full max-w-md items-center gap-1.5">
-                            <Label htmlFor="email">Password</Label>
+                            <Label htmlFor="email">{t('password')}</Label>
                             <InputPassword type="password" name="password" id="password" placeholder="Password" autoComplete="off" className={errorState.password ? "ring-red-500 ring-1" : ""} />
                             {errorState.password ? <small className="text-red-500">{errorState.password}</small> : ''}
                         </div>
                     </CardContent>
                     <CardFooter>
                         <Button type="submit">
-                            Login Dashboard
+                            {t('title')}
                         </Button>
                     </CardFooter>
                 </form>

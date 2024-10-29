@@ -1,0 +1,11 @@
+{
+    "LoginPage": {
+        "title": "Login Dashboard",
+        "email": "Email",
+        "password": "Password"
+    },
+    "HomePage": {
+        "title": "Dashboard",
+        "authenticated": "Authenticated"
+    }
+}

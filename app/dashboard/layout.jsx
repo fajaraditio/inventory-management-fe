@@ -1,6 +1,11 @@
+'use client';
+
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { Boxes, Home, ListChecks } from "lucide-react"
 import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
+import { setLanguage } from "../lib/actions/switchLang";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const AppSidebar = () => {
     return (
@@ -53,7 +58,51 @@ const AppSidebar = () => {
     )
 }
 
+const LanguageSwitcher = (props) => {
+    return (
+        <Select onValueChange={(val) => props.switch(val)}>
+            <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Select Language" />
+            </SelectTrigger>
+            <SelectContent>
+                <SelectItem value="en">English</SelectItem>
+                <SelectItem value="zh">Mandarin</SelectItem>
+                <SelectItem value="jp">Japan</SelectItem>
+            </SelectContent>
+        </Select >
+    )
+}
+
 const DashboardLayout = ({ children }) => {
+    const router = useRouter();
+
+    const pathName = usePathname();
+
+    const switchLanguage = async (locale) => {
+        await setLanguage(locale);
+
+        console.log(locale);
+
+        router.refresh();
+    }
+
+    const blankLayoutRoutes = [
+        '/dashboard/login',
+    ];
+
+    if (blankLayoutRoutes.includes(pathName)) return (
+        <>
+            <main className="w-full flex items-center justify-center">
+                <div className="container p-6">
+                    {children}
+                </div>
+            </main>
+            <div className="fixed bottom-10 right-10 z-10">
+                <LanguageSwitcher switch={switchLanguage}></LanguageSwitcher>
+            </div>
+        </>
+    );
+
     return (
         <SidebarProvider>
             <AppSidebar />
@@ -63,6 +112,9 @@ const DashboardLayout = ({ children }) => {
                     {children}
                 </div>
             </main>
+            <div className="fixed bottom-10 right-10 z-10">
+                <LanguageSwitcher switch={switchLanguage}></LanguageSwitcher>
+            </div>
         </SidebarProvider>
     )
 }

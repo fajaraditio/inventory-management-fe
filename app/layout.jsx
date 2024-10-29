@@ -1,12 +1,20 @@
+import { getLocale, getMessages } from "next-intl/server";
 import "./globals.css";
+import { NextIntlClientProvider } from "next-intl";
 
-const RootLayout = ({ children }) => {
+const RootLayout = async ({ children }) => {
+  const locale = await getLocale();
+
+  const messages = await getMessages();
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body
         className={`antialiased bg-gray-50`}
       >
-        {children}
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
