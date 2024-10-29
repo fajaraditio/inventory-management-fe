@@ -7,8 +7,11 @@ import { Check, ChevronsUpDown } from "lucide-react"
 import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 import { Input } from "@/components/ui/input"
+import { useTranslations } from "next-intl"
 
 const SearchProvince = () => {
+    const t = useTranslations('BrowseProjectPage');
+
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState("");
     const [provinces, setProvinces] = useState([]);
@@ -39,7 +42,7 @@ const SearchProvince = () => {
                     >
                         {value
                             ? provinces.find((province) => province.province_name === value)?.province_name
-                            : "Select Project Province"}
+                            : t('select_province_name')}
                         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
                 </PopoverTrigger>

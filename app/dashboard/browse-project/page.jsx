@@ -11,8 +11,11 @@ import SearchSubDistrict from "./extras/search-sub-district";
 import MatchSimilarityDataTable from "./extras/match-similarity-datatable";
 import { Button } from "@/components/ui/button";
 import B2BProjectService from "@/app/lib/services/B2BProjectService";
+import { useTranslations } from "next-intl";
 
 const BrowseProject = () => {
+    const t = useTranslations('BrowseProjectPage');
+
     let formState = {
         project_name: "",
         province_name: "",
@@ -51,46 +54,46 @@ const BrowseProject = () => {
     return (
         <>
             <div className="flex flex-col gap-6">
-                <h1 className="font-medium text-2xl">Browse Project</h1>
+                <h1 className="font-medium text-2xl">{t('title')}</h1>
 
                 <Separator></Separator>
 
                 <div>
-                    <h2 className="font-medium text-lg">Search Projects</h2>
-                    <p className="text-sm">Search projects with criteria and check similarity between projects</p>
+                    <h2 className="font-medium text-lg">{t('heading')}</h2>
+                    <p className="text-sm">{t('subheading')}</p>
                 </div>
 
                 <form onSubmit={searchProject}>
                     <div className="flex flex-wrap items-start gap-6 w-full mb-6">
                         <div className="w-1/3">
-                            <Label htmlFor="email" className="mb-6">Project Name</Label>
+                            <Label htmlFor="email" className="mb-6">{t('project_name')}</Label>
                             <Input type="text" name="project_name" id="project_name" placeholder="e.g: RS PIK" autoComplete="off" className={errorState.project_name ? "ring-red-500 ring-1" : ""} />
                             {errorState.project_name ? <small className="text-red-500">{errorState.project_name}</small> : ''}
                         </div>
                         <div className="w-1/3">
-                            <Label htmlFor="province_name" className="mb-6">Province Name</Label>
+                            <Label htmlFor="province_name" className="mb-6">{t('province_name')}</Label>
                             <SearchProvince className={errorState.province_name ? "ring-red-500 ring-1" : ""} />
                             {errorState.province_name ? <small className="text-red-500">{errorState.province_name}</small> : ''}
                         </div>
                         <div className="w-1/3">
-                            <Label htmlFor="city_name" className="mb-6">City Name</Label>
+                            <Label htmlFor="city_name" className="mb-6">{t('city_name')}</Label>
                             <SearchCity className={errorState.city_name ? "ring-red-500 ring-1" : ""} />
                             {errorState.city_name ? <small className="text-red-500">{errorState.city_name}</small> : ''}
                         </div>
                         <div className="w-1/3">
-                            <Label htmlFor="city_name" className="mb-6">District Name</Label>
+                            <Label htmlFor="city_name" className="mb-6">{t('district_name')}</Label>
                             <SearchDistrict className={errorState.district_name ? "ring-red-500 ring-1" : ""} />
                             {errorState.district_name ? <small className="text-red-500">{errorState.district_name}</small> : ''}
                         </div>
                         <div className="w-1/3">
-                            <Label htmlFor="city_name" className="mb-6">Sub District Name</Label>
+                            <Label htmlFor="city_name" className="mb-6">{t('sub_district_name')}</Label>
                             <SearchSubDistrict className={errorState.sub_district_name ? "ring-red-500 ring-1" : ""} />
                             {errorState.sub_district_name ? <small className="text-red-500">{errorState.sub_district_name}</small> : ''}
                         </div>
                     </div>
 
                     <div>
-                        <Button type="submit">Search Projects</Button>
+                        <Button type="submit">{t('heading')}</Button>
                     </div>
                 </form>
 

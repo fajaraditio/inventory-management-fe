@@ -45,7 +45,7 @@ const LoginPage = () => {
                 <CardHeader>
                     <Image src="/gree-logo.svg" alt="Gree Logo" width={150} height={150} className="mb-6"></Image>
                     <CardTitle>{t('title')}</CardTitle>
-                    <CardDescription>Please login to continue to dashboard</CardDescription>
+                    <CardDescription>{t('subtitle')}</CardDescription>
                 </CardHeader>
                 <form onSubmit={login}>
                     <CardContent className="flex flex-col gap-6">

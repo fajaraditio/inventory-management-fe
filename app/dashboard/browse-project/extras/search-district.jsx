@@ -7,8 +7,11 @@ import { Check, ChevronsUpDown } from "lucide-react"
 import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 import { Input } from "@/components/ui/input"
+import { useTranslations } from "next-intl"
 
 const SearchDistrict = () => {
+    const t = useTranslations('BrowseProjectPage');
+
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState("");
     const [districts, setDistricts] = useState([]);
@@ -39,7 +42,7 @@ const SearchDistrict = () => {
                     >
                         {value
                             ? districts.find((district) => district.district_name === value)?.district_name
-                            : "Select Project District"}
+                            : t('select_district_name')}
                         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
                 </PopoverTrigger>

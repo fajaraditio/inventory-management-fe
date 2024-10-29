@@ -6,23 +6,26 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { setLanguage } from "../lib/actions/switchLang";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useTranslations } from "next-intl";
 
 const AppSidebar = () => {
+    const t = useTranslations('NavMenu');
+
     return (
         <Sidebar className="p-3">
             <SidebarHeader>
-                <h1 className="font-bold">Dashboard</h1>
+                <h1 className="font-bold">{t('dashboard')}</h1>
             </SidebarHeader>
             <SidebarContent>
                 <SidebarGroup>
-                    <SidebarGroupLabel>Product</SidebarGroupLabel>
+                    <SidebarGroupLabel>{t('product')}</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
                             <SidebarMenuItem>
                                 <SidebarMenuButton asChild>
                                     <Link href="/">
                                         <Home />
-                                        <span>Home</span>
+                                        <span>{t('home')}</span>
                                     </Link>
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
@@ -30,7 +33,7 @@ const AppSidebar = () => {
                                 <SidebarMenuButton asChild>
                                     <Link href="/dashboard/product-category">
                                         <Boxes />
-                                        <span>Product Category</span>
+                                        <span>{t('product_category')}</span>
                                     </Link>
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
@@ -38,14 +41,14 @@ const AppSidebar = () => {
                     </SidebarGroupContent>
                 </SidebarGroup>
                 <SidebarGroup>
-                    <SidebarGroupLabel>B2B Project</SidebarGroupLabel>
+                    <SidebarGroupLabel>{t('b2b_project')}</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
                             <SidebarMenuItem>
                                 <SidebarMenuButton asChild>
                                     <Link href="/dashboard/browse-project">
                                         <ListChecks />
-                                        <span>Browse Projects</span>
+                                        <span>{t('browse_project')}</span>
                                     </Link>
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
@@ -66,8 +69,8 @@ const LanguageSwitcher = (props) => {
             </SelectTrigger>
             <SelectContent>
                 <SelectItem value="en">English</SelectItem>
-                <SelectItem value="zh">Mandarin</SelectItem>
-                <SelectItem value="jp">Japan</SelectItem>
+                <SelectItem value="zh">Chinese</SelectItem>
+                <SelectItem value="id">Indonesia</SelectItem>
             </SelectContent>
         </Select >
     )

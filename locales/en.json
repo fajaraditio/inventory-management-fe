@@ -1,11 +1,43 @@
 {
+    "NavMenu": {
+        "dashboard": "Dashboard",
+        "home": "Home",
+        "product": "Product",
+        "product_category": "Product Category",
+        "b2b_project": "B2B Project",
+        "browse_project": "Browse Project"
+    },
     "LoginPage": {
         "title": "Login Dashboard",
+        "subtitle": "Please login to continue to dashboard",
         "email": "Email",
         "password": "Password"
     },
     "HomePage": {
         "title": "Dashboard",
         "authenticated": "Authenticated"
+    },
+    "BrowseProjectPage": {
+        "title": "Browse Project",
+        "heading": "Search Project",
+        "subheading": "Search projects with criteria and check similarity between projects",
+        "project_name": "Project Name",
+        "province_name": "Province Name",
+        "select_province_name": "Select Province Name",
+        "city_name": "City Name",
+        "select_city_name": "Select City Name",
+        "district_name": "District Name",
+        "select_district_name": "Select District Name",
+        "sub_district_name": "Sub District Name",
+        "select_sub_district_name": "Select Sub District Name",
+        "number": "No.",
+        "no_results": "No Results",
+        "project_code": "Project Code",
+        "salesman": "Salesman",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "total_amount": "Total Amount",
+        "similarity_score": "Similarity Score",
+        "is_existing_project": "Is Existing Project"
     }
 }
