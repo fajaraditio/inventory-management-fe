@@ -22,7 +22,7 @@ class LoginService {
         } catch (error) {
             console.error(error);
 
-            return { success: false, message: 'Somthing went wrong. Please, try again later' };
+            return { success: false, message: 'Something went wrong. Please, try again later' };
         }
     };
 }

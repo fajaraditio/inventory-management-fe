@@ -1,7 +1,7 @@
 'use client';
 
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
-import { Boxes, Home, ListChecks } from "lucide-react"
+import { Boxes, Home, ListChecks, Table } from "lucide-react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { setLanguage } from "../lib/actions/switchLang";
@@ -49,6 +49,14 @@ const AppSidebar = () => {
                                     <Link href="/dashboard/browse-project">
                                         <ListChecks />
                                         <span>{t('browse_project')}</span>
+                                    </Link>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
+                            <SidebarMenuItem>
+                                <SidebarMenuButton asChild>
+                                    <Link href="/dashboard/project-report">
+                                        <Table />
+                                        <span>{t('project_report')}</span>
                                     </Link>
                                 </SidebarMenuButton>
                             </SidebarMenuItem>

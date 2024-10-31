@@ -5,7 +5,8 @@
         "product": "Product",
         "product_category": "Product Category",
         "b2b_project": "B2B Project",
-        "browse_project": "Browse Project"
+        "browse_project": "Browse Project",
+        "project_report": "Project Report"
     },
     "LoginPage": {
         "title": "Login Dashboard",
@@ -39,5 +40,16 @@
         "total_amount": "Total Amount",
         "similarity_score": "Similarity Score",
         "is_existing_project": "Is Existing Project"
+    },
+    "ProjectReportPage": {
+        "title": "Project Report",
+        "heading": "Search Project",
+        "subheading": "Search project report by salesmen",
+        "number": "No.",
+        "salesman_name": "Salesman",
+        "report_title": "Report Title",
+        "report_content": "Report Content",
+        "created_at": "Reported At",
+        "no_results": "No Results"
     }
 }
