@@ -1,6 +1,8 @@
 import ProjectReportService from "@/app/lib/services/ProjectReportService";
+import TranslateService from "@/app/lib/services/TranslateService";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogDescription, DialogFooter, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useFormatter, useTranslations } from "next-intl";
 import { useState } from "react";
@@ -10,6 +12,20 @@ const ViewDialog = ({ data, onClose, isOpen }) => {
     const format = useFormatter();
 
     let projectReport = data?.data;
+
+    const [title, setTitle] = useState(null);
+    const [content, setContent] = useState(null);
+
+    const translate = async (targetLang) => {
+        const translatedTitle = await TranslateService.translate(projectReport?.title, targetLang);
+        const translatedContent = await TranslateService.translate(projectReport?.content, targetLang);
+
+        projectReport.title = translatedTitle.data[0];
+        projectReport.content = translatedContent.data[0];
+
+        setTitle(translatedTitle.data[0]);
+        setContent(translatedContent.data[0]);
+    }
 
     return (
         <Dialog onOpenChange={onClose} open={isOpen} modal defaultOpen={isOpen}>
@@ -35,15 +51,15 @@ const ViewDialog = ({ data, onClose, isOpen }) => {
                     </div>
                     <div className="mb-3">
                         <label htmlFor="title" className="block mb-2 font-medium">{t('report_title')}</label>
-                        <span id="title" className="italic">{projectReport?.title}</span>
+                        <span id="title" className="italic">{title || projectReport?.title}</span>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="content" className="block mb-2 font-medium">{t('report_content')}</label>
-                        <span id="content" className="italic">{projectReport?.content}</span>
+                        <span id="content" className="italic">{content || projectReport?.content}</span>
                     </div>
                 </div>
                 <DialogFooter>
-                    <Button type="button" onClick={() => translate()}>Translate</Button>
+                    <LanguageSwitcher switch={translate} />
                 </DialogFooter>
             </DialogContent>
         </Dialog>
@@ -110,6 +126,21 @@ const DataTable = (data, ...props) => {
             </div>
         </>
     )
+}
+
+const LanguageSwitcher = (props) => {
+    return (
+        <Select onValueChange={(val) => props.switch(val)}>
+            <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Select Language" />
+            </SelectTrigger>
+            <SelectContent>
+                <SelectItem value="en">English</SelectItem>
+                <SelectItem value="zh">Chinese</SelectItem>
+                <SelectItem value="id">Indonesia</SelectItem>
+            </SelectContent>
+        </Select>
+    );
 }
 
 export default DataTable;
