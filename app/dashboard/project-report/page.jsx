@@ -2,13 +2,20 @@
 
 import { Separator } from "@/components/ui/separator";
 import { useTranslations } from "next-intl";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DataTable from "./extras/datatable";
+import ProjectReportService from "@/app/lib/services/ProjectReportService";
 
 const projectReport = () => {
-    const t  = useTranslations('ProjectReportPage');
+    const t = useTranslations('ProjectReportPage');
 
     const [dataset, setDataset] = useState(null);
+
+    useEffect(() => async () => {
+        const response = await ProjectReportService.fetchProjectReports();
+
+        setDataset(response.data);
+    }, [])
 
     return (
         <div className="flex flex-col gap-6">
