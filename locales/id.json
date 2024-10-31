@@ -1,11 +1,1 @@
-{
-    "LoginPage": {
-        "title": "Dasbor Masuk",
-        "email": "Email",
-        "password": "Kata sandi"
-    },
-    "HomePage": {
-        "title": "Dasbor",
-        "authenticated": "Diotentikasi"
-    }
-}
+{"NavMenu":{"dashboard":"Dasbor","home":"Beranda","product":"Produk","product_category":"Kategori Produk","b2b_project":"Proyek B2B","browse_project":"Jelajahi Proyek"},"LoginPage":{"title":"Dasbor Masuk","subtitle":"Silakan masuk untuk melanjutkan ke dasbor","email":"Email","password":"Kata sandi"},"HomePage":{"title":"Dasbor","authenticated":"Diotentikasi"},"BrowseProjectPage":{"title":"Jelajahi Proyek","heading":"Cari Proyek","subheading":"Cari proyek dengan kriteria dan periksa kesamaan antar proyek","project_name":"Nama Proyek","province_name":"Nama Provinsi","select_province_name":"Pilih Nama Provinsi","city_name":"Nama Kota","select_city_name":"Pilih Nama Kota","district_name":"Nama Kabupaten","select_district_name":"Pilih Nama Kabupaten","sub_district_name":"Nama Kecamatan","select_sub_district_name":"Pilih Nama Kecamatan","number":"Tidak.","no_results":"Tidak ada hasil","project_code":"Kode Proyek","salesman":"Penjual","latitude":"Lintang","longitude":"Bujur","total_amount":"Jumlah Total","similarity_score":"Skor Kemiripan","is_existing_project":"Adalah Proyek yang Sudah Ada"}}
