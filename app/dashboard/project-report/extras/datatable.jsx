@@ -7,14 +7,14 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { useFormatter, useTranslations } from "next-intl";
 import { useState } from "react";
 
-const ViewDialog = ({ data, onClose, isOpen }) => {
+const ViewDialog = ({ data, onOpenChange, isOpen }) => {
     const t = useTranslations('ProjectReportPage');
     const format = useFormatter();
 
-    let projectReport = data?.data;
-
     const [title, setTitle] = useState(null);
     const [content, setContent] = useState(null);
+
+    let projectReport = data?.data;
 
     const translate = async (targetLang) => {
         const translatedTitle = await TranslateService.translate(projectReport?.title, targetLang);
@@ -27,8 +27,13 @@ const ViewDialog = ({ data, onClose, isOpen }) => {
         setContent(translatedContent.data[0]);
     }
 
+    if (title && content && !isOpen) {
+        setTitle(null);
+        setContent(null);
+    }
+
     return (
-        <Dialog onOpenChange={onClose} open={isOpen} modal defaultOpen={isOpen}>
+        <Dialog onOpenChange={onOpenChange} open={isOpen} modal defaultOpen={isOpen}>
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle>View Report</DialogTitle>
@@ -84,7 +89,7 @@ const DataTable = (data, ...props) => {
 
     return (
         <>
-            <ViewDialog onClose={setDialogOpen} isOpen={isDialogOpen} data={singleDataset} />
+            <ViewDialog onOpenChange={setDialogOpen} isOpen={isDialogOpen} data={singleDataset} />
 
             <div className="bg-white rounded-md border">
                 <Table>
