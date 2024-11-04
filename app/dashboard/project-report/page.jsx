@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import DataTable from "./extras/datatable";
 import ProjectReportService from "@/app/lib/services/ProjectReportService";
 
-const projectReport = () => {
+const ProjectReport = () => {
     const t = useTranslations('ProjectReportPage');
 
     const [dataset, setDataset] = useState(null);
@@ -29,8 +29,9 @@ const projectReport = () => {
             </div>
 
             <DataTable data={dataset}></DataTable>
-        </div>);
+        </div>
+    );
 
 }
 
-export default projectReport;
+export default ProjectReport;
