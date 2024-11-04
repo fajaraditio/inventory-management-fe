@@ -108,7 +108,7 @@ const DashboardLayout = ({ children }) => {
                     {children}
                 </div>
             </main>
-            <div className="fixed bottom-10 right-10 z-10">
+            <div className="fixed bottom-10 left-10 z-10">
                 <LanguageSwitcher switch={switchLanguage}></LanguageSwitcher>
             </div>
         </>
@@ -123,7 +123,7 @@ const DashboardLayout = ({ children }) => {
                     {children}
                 </div>
             </main>
-            <div className="fixed bottom-10 right-10 z-10">
+            <div className="fixed bottom-10 left-10 z-10">
                 <LanguageSwitcher switch={switchLanguage}></LanguageSwitcher>
             </div>
         </SidebarProvider>
