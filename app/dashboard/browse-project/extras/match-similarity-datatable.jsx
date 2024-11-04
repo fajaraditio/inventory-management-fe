@@ -53,7 +53,12 @@ const ViewDialog = ({ data, onOpenChange, isOpen }) => {
                                         <p>Salesman: {b2bproject?.salesman_name}</p>
                                         <p>Total Amount: {formatter.number(b2bproject?.total_amount, { style: 'currency', currencyDisplay: 'narrowSymbol', currency: 'IDR', maximumFractionDigits: 0 })}</p>
                                     </InfoWindow>
-                                    <Pin background={'#15489B'} glyphColor={'#fff'} borderColor={'#15489B'}></Pin>
+                                    <Pin
+                                        background={'#15489B'}
+                                        glyphColor={'#fff'}
+                                        borderColor={'#15489B'}
+                                    >
+                                    </Pin>
                                 </AdvancedMarker>
                             </Map>
                         </APIProvider>

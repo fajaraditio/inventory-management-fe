@@ -6,7 +6,8 @@
         "product_category": "Product Category",
         "b2b_project": "B2B Project",
         "browse_project": "Browse Project",
-        "project_report": "Project Report"
+        "project_report": "Project Report",
+        "project_map": "Project Map"
     },
     "LoginPage": {
         "title": "Login Dashboard",
@@ -51,5 +52,10 @@
         "report_content": "Report Content",
         "created_at": "Reported At",
         "no_results": "No Results"
+    },
+    "ProjectMapPage": {
+        "title": "Project Map",
+        "heading": "Find Project",
+        "subheading": "Find spreaded projects by google maps"
     }
 }

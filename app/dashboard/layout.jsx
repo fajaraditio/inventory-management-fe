@@ -1,7 +1,7 @@
 'use client';
 
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
-import { Boxes, Home, ListChecks, Table } from "lucide-react"
+import { Boxes, Home, ListChecks, MapPinHouse, Table } from "lucide-react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { setLanguage } from "../lib/actions/switchLang";
@@ -10,6 +10,7 @@ import { useTranslations } from "next-intl";
 
 const AppSidebar = () => {
     const t = useTranslations('NavMenu');
+    const pathName = usePathname();
 
     return (
         <Sidebar className="p-3">
@@ -22,8 +23,8 @@ const AppSidebar = () => {
                     <SidebarGroupContent>
                         <SidebarMenu>
                             <SidebarMenuItem>
-                                <SidebarMenuButton asChild>
-                                    <Link href="/">
+                                <SidebarMenuButton asChild isActive={pathName === '/dashboard'}>
+                                    <Link href="/dashboard">
                                         <Home />
                                         <span>{t('home')}</span>
                                     </Link>
@@ -45,7 +46,7 @@ const AppSidebar = () => {
                     <SidebarGroupContent>
                         <SidebarMenu>
                             <SidebarMenuItem>
-                                <SidebarMenuButton asChild>
+                                <SidebarMenuButton asChild isActive={pathName === '/dashboard/browse-project'}>
                                     <Link href="/dashboard/browse-project">
                                         <ListChecks />
                                         <span>{t('browse_project')}</span>
@@ -53,7 +54,15 @@ const AppSidebar = () => {
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
                             <SidebarMenuItem>
-                                <SidebarMenuButton asChild>
+                                <SidebarMenuButton asChild isActive={pathName === '/dashboard/project-map'}>
+                                    <Link href="/dashboard/project-map">
+                                        <MapPinHouse />
+                                        <span>{t('project_map')}</span>
+                                    </Link>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
+                            <SidebarMenuItem>
+                                <SidebarMenuButton asChild isActive={pathName === '/dashboard/project-report'}>
                                     <Link href="/dashboard/project-report">
                                         <Table />
                                         <span>{t('project_report')}</span>
